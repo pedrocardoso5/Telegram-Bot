@@ -4,16 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>goddardb.com</groupId>
+    <groupId>goddardpkg</groupId>
     <artifactId>goddard_bot</artifactId>
     <version>1.0-SNAPSHOT</version>
+
 
     <dependencies>
 
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots</artifactId>
-            <version>4.4.0</version>
+            <version>3.5</version>
         </dependency>
 
     </dependencies>
