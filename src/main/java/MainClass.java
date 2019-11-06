@@ -10,8 +10,6 @@ public class MainClass {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try {
             telegramBotsApi.registerBot(new GoddardBot());
-
-
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
