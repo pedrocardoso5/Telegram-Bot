@@ -1,3 +1,4 @@
+import org.glassfish.grizzly.http.server.io.ServerOutputBuffer;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -13,6 +14,8 @@ public class GoddardBot extends TelegramLongPollingBot {
         String command=update.getMessage().getText();
         SendMessage message = new SendMessage();
 
+        System.out.println("Command: " + command);
+
         if(command.equals("/myname")){
             System.out.println(update.getMessage().getFrom().getFirstName() );
 
@@ -20,10 +23,11 @@ public class GoddardBot extends TelegramLongPollingBot {
         }
 
         message.setChatId(update.getMessage().getChatId());
+
         try{
             execute(message);
         } catch (TelegramApiException e){
-            e.printStackTrace();
+            System.out.println("No message were returned");
         }
 
     }
