@@ -1,12 +1,24 @@
+import java.util.Iterator;
+import java.util.Vector;
+
 public class Manager {
     private static Manager instance = new Manager();
-    
+    Vector items = new Vector();
+    Vector categories = new Vector();
+    Vector locations = new Vector();
+
     public static Manager getInstance(){
         return instance;
     }
 
     private Manager(){
         //TODO: Read all files and save objects
+        System.out.println("Manager constructor");
+    }
+
+    private void saveToFile(){
+        //TODO: Write vectors info in files
+        System.out.println("Saving info in files");
     }
 
     public String printHelp(){

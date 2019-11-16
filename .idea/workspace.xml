@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="268f59d8-7662-4be8-afec-f9c80d28d3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GoddardBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GoddardBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -89,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573874110260</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Adding welcome and start message and command switcher">
+      <created>1573877311401</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573877311401</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,7 +115,8 @@
     <MESSAGE value="test" />
     <MESSAGE value="Warnings from &quot;send no message to Telegram&quot; were solved" />
     <MESSAGE value="Adding manager class and database entity classes (location, category and item)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding manager class and database entity classes (location, category and item)" />
+    <MESSAGE value="Adding welcome and start message and command switcher" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding welcome and start message and command switcher" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
