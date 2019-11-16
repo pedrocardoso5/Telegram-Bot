@@ -5,23 +5,15 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
 public class GoddardBot extends TelegramLongPollingBot {
+    private Manager manager = null;
 
     public void onUpdateReceived(Update update) {
-
-        //System.out.println(update.getMessage().getFrom().getFirstName() );
-        //System.out.println(update.getMessage().getText());
-
+        // Receiving commands
         String command=update.getMessage().getText();
         SendMessage message = new SendMessage();
 
-        System.out.println("Command: " + command);
-
-        if(command.equals("/myname")){
-            System.out.println(update.getMessage().getFrom().getFirstName() );
-
-            message.setText(update.getMessage().getFrom().getFirstName());
-        }
-
+        //TODO: Call manager method according to received command
+        manager = manager.getInstance();
         message.setChatId(update.getMessage().getChatId());
 
         try{
