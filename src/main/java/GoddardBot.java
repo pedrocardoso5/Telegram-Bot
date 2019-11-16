@@ -12,10 +12,37 @@ public class GoddardBot extends TelegramLongPollingBot {
         String command=update.getMessage().getText();
         SendMessage message = new SendMessage();
 
-        //TODO: Call manager method according to received command
+        // commands switcher
         manager = manager.getInstance();
-        message.setChatId(update.getMessage().getChatId());
+        System.out.println("Command: " + command);
 
+        if (command.equals("/help")) {
+            message.setText(manager.printHelp());
+        }
+        else if (command.equals("/start")) {
+            message.setText(manager.printWelcome());
+        }
+        else if (command.equals("/register")) {
+            message.setText("Error: command not available yet");
+        }
+        else if (command.equals("/list")) {
+            message.setText("Error: command not available yet");
+        }
+        else if (command.equals("/search")) {
+            message.setText("Error: command not available yet");
+        }
+        else if (command.equals("/edit")) {
+            message.setText("Error: command not available yet");
+        }
+        else if (command.equals("/report")) {
+            message.setText("Error: command not available yet");
+        }
+        else {
+            message.setText("Error: Invalid command\n\n"+manager.printHelp());
+        }
+
+        // sending answer
+        message.setChatId(update.getMessage().getChatId());
         try{
             execute(message);
         } catch (TelegramApiException e){
