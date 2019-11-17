@@ -26,8 +26,17 @@ public class GoddardBot extends TelegramLongPollingBot {
         else if (command.equals("/register")) {
             message.setText("Error: command not available yet");
         }
-        else if (command.equals("/list")) {
-            message.setText("Error: command not available yet");
+        else if (command.equals("/list_Locations")) {
+            message.setText(manager.list_Locations());
+            // message.setText("Error: command not available yet");
+        }
+        else if (command.equals("/list_Categories")) {
+            message.setText(manager.list_Categories());
+            // message.setText("Error: command not available yet");
+        }
+        else if (command.equals("/list_Items")) {
+            message.setText(manager.list_Items());
+            // message.setText("Error: command not available yet");
         }
         else if (command.equals("/search")) {
             message.setText("Error: command not available yet");

@@ -145,6 +145,27 @@ public class Manager {
         }
     }
 
+    public String list_Locations(){
+        String text = "\n";
+        for (int index = 0 ; index < locations.size() ; index++){
+            text = text + locations.get(index).toString() + "\n";
+        }
+        return text;
+    }
+    public String list_Categories(){
+        String text = "\n";
+        for (int index = 0 ; index < categories.size() ; index++){
+            text = text + categories.get(index).toString() + "\n";
+        }
+        return text;
+    }
+    public String list_Items(){
+        String text = "\n";
+        for (int index = 0 ; index < items.size() ; index++){
+            text = text + items.get(index).toString() + "\n";
+        }
+        return text;
+    }
     private Category findCategoryByCode(String code) {
         for (int index = 0 ; index < categories.size() ; index++) {
             if(categories.get(index).getCode().equals(code)){
