@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="268f59d8-7662-4be8-afec-f9c80d28d3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GoddardBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GoddardBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,7 +99,28 @@
       <option name="project" value="LOCAL" />
       <updated>1573877311401</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adding vectors to load entities">
+      <created>1573879484495</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573879484495</updated>
+    </task>
+    <task id="LOCAL-00006" summary="toString methods">
+      <created>1573972098867</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1573972098867</updated>
+    </task>
+    <task id="LOCAL-00007" summary="toString methods update">
+      <created>1573974004448</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1573974004448</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -116,14 +141,17 @@
     <MESSAGE value="Warnings from &quot;send no message to Telegram&quot; were solved" />
     <MESSAGE value="Adding manager class and database entity classes (location, category and item)" />
     <MESSAGE value="Adding welcome and start message and command switcher" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding welcome and start message and command switcher" />
+    <MESSAGE value="Adding vectors to load entities" />
+    <MESSAGE value="toString methods" />
+    <MESSAGE value="toString methods update" />
+    <option name="LAST_COMMIT_MESSAGE" value="toString methods update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Category.java</url>
-          <line>9</line>
+          <line>14</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

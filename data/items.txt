@@ -1,0 +1,4 @@
+IT001 Computador1 computador_da_sala_de_jogos CT002 IMD
+IT002 Computador2 computador_da_sala_do_talento CT002 IMD
+IT003 Computador3 computador_da_sala_3h1 CT002 Setor_3
+IT004 Sabao Sabao_da_marca_hp CT001 Predio_do_sigaa
