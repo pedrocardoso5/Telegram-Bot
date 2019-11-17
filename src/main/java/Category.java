@@ -6,6 +6,11 @@ public class Category extends DBEntity {
         this.code = code;
     }
 
+    public Category(Category category) {
+        super(category.getName(), category.getCode());
+        this.code = category.getCode();
+    }
+
     public String getCode() {
         return code;
     }
