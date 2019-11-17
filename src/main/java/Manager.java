@@ -144,11 +144,10 @@ public class Manager {
             }
         }
 
-
-        // read from FileReader till the end of file
-//        while ((ch=fr.read())!=-1)
-//            System.out.print((char)ch);
-
+        items.remove(0);
+        locations.remove(0);
+        categories.remove(0);
+        saveToFile();
     }
 
     private Category findCategoryByCode(String code) {
@@ -172,14 +171,43 @@ public class Manager {
     }
 
     private void saveToFile(){
-        //TODO: Write vectors info in files
         System.out.println("Saving info in files");
+        // Saving locations
         try {
-            FileWriter fw = new FileWriter("data/output.txt");
-            fw.write("super teste meu lindo ");
-            fw.write("outro teste na mesma linda\n");
-            fw.write("agora na outra linha\n");
+
+            // saving locations vector info in a aux file
+            FileWriter fw = new FileWriter("data/aux_file.txt");
+            for (int index = 0 ; index < locations.size() ; index++){
+                fw.write(locations.get(index).toString() + "\n");
+            }
             fw.close();
+            // deleting locations.txt and changing aux file name to locations.txt
+            File old_file = new File("data/locations.txt");
+            File new_file = new File("data/aux_file.txt");
+            new_file.renameTo(old_file);
+
+            // saving categories vector info in a aux file
+            fw = new FileWriter("data/aux_file.txt");
+            for (int index = 0 ; index < categories.size() ; index++){
+                fw.write(categories.get(index).toString() + "\n");
+            }
+            fw.close();
+            // deleting categories.txt and changing aux file name to categories.txt
+            old_file = new File("data/categories.txt");
+            new_file = new File("data/aux_file.txt");
+            new_file.renameTo(old_file);
+
+            // saving categories vector info in a aux file
+            fw = new FileWriter("data/aux_file.txt");
+            for (int index = 0 ; index < items.size() ; index++){
+                fw.write(items.get(index).toString() + "\n");
+            }
+            fw.close();
+            // deleting items.txt and changing aux file name to items.txt
+            old_file = new File("data/items.txt");
+            new_file = new File("data/aux_file.txt");
+            new_file.renameTo(old_file);
+
         } catch (IOException e){
             e.printStackTrace();
         }

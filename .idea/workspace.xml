@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="268f59d8-7662-4be8-afec-f9c80d28d3f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GoddardBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GoddardBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -120,7 +117,28 @@
       <option name="project" value="LOCAL" />
       <updated>1573974004448</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="toString methods (re)update">
+      <created>1573975177655</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1573975177655</updated>
+    </task>
+    <task id="LOCAL-00009" summary="adding constructor">
+      <created>1573975218185</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1573975218185</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Loading locations, categories and items info from files">
+      <created>1573975292356</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1573975292356</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +162,10 @@
     <MESSAGE value="Adding vectors to load entities" />
     <MESSAGE value="toString methods" />
     <MESSAGE value="toString methods update" />
-    <option name="LAST_COMMIT_MESSAGE" value="toString methods update" />
+    <MESSAGE value="toString methods (re)update" />
+    <MESSAGE value="adding constructor" />
+    <MESSAGE value="Loading locations, categories and items info from files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Loading locations, categories and items info from files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
