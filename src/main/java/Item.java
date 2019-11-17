@@ -3,7 +3,7 @@ public class Item extends DBEntity {
     private Location location;
     private Category category;
 
-    public Item(String name, String description, String code, Location location, Category category) {
+    public Item(String code, String name, String description, Category category, Location location) {
         super(name, description);
         this.code = code;
         this.location = location;
@@ -32,5 +32,10 @@ public class Item extends DBEntity {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String toString(){
+        return  code + " " + super.getName() + " " + super.getDescription() +
+                " " + category.toString() + " " + location.toString();
     }
 }

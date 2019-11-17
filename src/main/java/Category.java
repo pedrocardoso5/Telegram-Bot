@@ -1,7 +1,7 @@
 public class Category extends DBEntity {
     private String code;
 
-    public Category(String name, String description, String code) {
+    public Category(String code, String name, String description) {
         super(name, description);
         this.code = code;
     }
@@ -12,5 +12,9 @@ public class Category extends DBEntity {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String toString(){
+        return code + " " + super.getName() + " " + super.getDescription();
     }
 }
