@@ -34,7 +34,7 @@ public class Manager {
                 isOpen = true;
                 Scanner locations_reader = new Scanner(locations_file);
 
-                while(locations_reader.hasNextLine()) {
+                while(locations_reader.hasNext()) {
                     String name = new String(locations_reader.next());
                     String description = new String(locations_reader.next());
                     Location location = new Location(name, description);
@@ -71,7 +71,7 @@ public class Manager {
                 isOpen = true;
                 Scanner categories_reader = new Scanner(categories_file);
 
-                while(categories_reader.hasNextLine()) {
+                while(categories_reader.hasNext()) {
                     String code = new String(categories_reader.next());
                     String name = new String(categories_reader.next());
                     String description = new String(categories_reader.next());
@@ -110,7 +110,7 @@ public class Manager {
                 isOpen = true;
                 Scanner items_reader = new Scanner(items_file);
 
-                while(items_reader.hasNextLine()) {
+                while(items_reader.hasNext()) {
                     String code = new String(items_reader.next());
                     String name = new String(items_reader.next());
                     String description = new String(items_reader.next());
@@ -143,11 +143,6 @@ public class Manager {
 
             }
         }
-
-        items.remove(0);
-        locations.remove(0);
-        categories.remove(0);
-        saveToFile();
     }
 
     private Category findCategoryByCode(String code) {
