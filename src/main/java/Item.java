@@ -35,7 +35,6 @@ public class Item extends DBEntity {
     }
 
     public String toString(){
-        return  code + " " + super.getName() + " " + super.getDescription() +
-                " " + category.toString() + " " + location.toString();
+        return  code + " " + super.getName() + " " + super.getDescription();
     }
 }
