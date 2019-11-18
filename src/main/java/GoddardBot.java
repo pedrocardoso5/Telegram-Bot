@@ -1,13 +1,27 @@
-import org.glassfish.grizzly.http.server.io.ServerOutputBuffer;
 import java.lang.*;
 import org.telegram.telegrambots.api.methods.send.SendMessage;
 import org.telegram.telegrambots.api.objects.Update;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.exceptions.TelegramApiException;
 
+/**
+ * The GoddardBot implement the bot
+ *
+ * @author  Matheus de Andrade
+ * @author  Pedro Henrique
+ * @version 1.0
+ */
 public class GoddardBot extends TelegramLongPollingBot {
     private Manager manager = null;
 
+    /**
+     * Is called every new message to bot
+     *
+     * @param   update Update object with a new message
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public void onUpdateReceived(Update update) {
         // Receiving commands
         String msgReceived = update.getMessage().getText();

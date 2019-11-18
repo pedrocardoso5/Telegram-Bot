@@ -1,7 +1,24 @@
+
+/**
+ * Abstract class to Item, Category and Location
+ *
+ * @author  Matheus de Andrade
+ * @author  Pedro Henrique
+ * @version 1.0
+ */
 public abstract class DBEntity {
     private String name;
     private String description;
 
+    /**
+     * DBEntity constructor
+     *
+     * @param   name entity name
+     * @param   description entity description
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public DBEntity(String name, String description) {
         this.name = name;
         this.description = description;

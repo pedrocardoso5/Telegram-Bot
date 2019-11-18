@@ -1,6 +1,3 @@
-import org.apache.commons.io.IOExceptionWithCause;
-
-import java.util.Iterator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
@@ -10,18 +7,39 @@ import java.util.Scanner;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
-import static org.glassfish.grizzly.http.util.DataChunk.Type.String;
-
+/**
+ * The Manager is the class that manage all bot functions
+ *
+ * @author  Matheus de Andrade
+ * @author  Pedro Henrique
+ * @version 1.0
+ */
 public class Manager {
     private static Manager instance = new Manager();
     Vector<Item> items = new Vector<Item>();
     Vector<Category> categories = new Vector<Category>();
     Vector<Location> locations = new Vector<Location>();
 
+    /**
+     * Applies singleton design pattern
+     *
+     * @return  the only instance of manager
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public static Manager getInstance(){
         return instance;
     }
 
+    /**
+     * Manager constructor
+     * Load all info from files (.txt) to vectors
+     *
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     private Manager(){
         // TODO: Read all files and save objects
         System.out.println("Manager constructor");
@@ -147,6 +165,16 @@ public class Manager {
         }
     }
 
+    /**
+     * Add a new location
+     *
+     * @param   str string with all info to create a new location
+     * @throws  EntityAlreadyExistsException
+     * @throws  IllegalArgumentException
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public void addLocation(String str) throws EntityAlreadyExistsException {
         // splitting string
         String arr[] = str.split(" ");
@@ -168,6 +196,16 @@ public class Manager {
         saveToFile();
     }
 
+    /**
+     * Add a new category
+     *
+     * @param   str string with all info to create a new category
+     * @throws  EntityAlreadyExistsException
+     * @throws  IllegalArgumentException
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public void addCategory(String str) throws EntityAlreadyExistsException {
         // splitting string
         String arr[] = str.split(" ");
@@ -189,6 +227,17 @@ public class Manager {
         saveToFile();
     }
 
+    /**
+     * Add a new item
+     *
+     * @param   str string with all info to create a new item
+     * @throws  EntityAlreadyExistsException
+     * @throws  EntityDoesNotExistsException
+     * @throws  IllegalArgumentException
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public void addItem(String str) throws EntityAlreadyExistsException, EntityDoesNotExistsException {
         //splitting string
         System.out.println(str);
@@ -223,6 +272,14 @@ public class Manager {
         saveToFile();
     }
 
+    /**
+     * list all locations
+     *
+     * @return  String with all locations
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String listLocations(){
         String text = "\n";
         for (int index = 0 ; index < locations.size() ; index++){
@@ -231,6 +288,14 @@ public class Manager {
         return text;
     }
 
+    /**
+     * list all categories
+     *
+     * @return  String with all categories
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String listCategories(){
         String text = "\n";
         for (int index = 0 ; index < categories.size() ; index++){
@@ -239,6 +304,14 @@ public class Manager {
         return text;
     }
 
+    /**
+     * list all items
+     *
+     * @return  String with all items
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String listItems(){
         String text = "\n";
         for (int index = 0 ; index < locations.size() ; index++){
@@ -254,6 +327,15 @@ public class Manager {
         return text;
     }
 
+    /**
+     * search for items with codes that contains the given code
+     *
+     * @param   code code to be searched
+     * @return  String with all results of the search
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String searchItemByCode(String code){
         String result = new String("RESULT: \n\n");
 
@@ -271,6 +353,15 @@ public class Manager {
         return result;
     }
 
+    /**
+     * search for items with names that contains the given name
+     *
+     * @param   name name to be searched
+     * @return  String with all results of the search
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String searchItemByName(String name){
         String result = new String("RESULT: \n\n");
 
@@ -288,6 +379,15 @@ public class Manager {
         return result;
     }
 
+    /**
+     * search for items with descriptions that contains the given description
+     *
+     * @param   description description to be searched
+     * @return  String with all results of the search
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String searchItemByDescription(String description) {
         String result = new String("RESULT: \n\n");
 
@@ -305,6 +405,16 @@ public class Manager {
         return result;
     }
 
+    /**
+     * change the location of an item
+     *
+     * @param   code code of the item
+     * @param   location_name name of the new location
+     * @throws  EntityDoesNotExistsException
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public void editItemLocation(String code, String location_name) throws EntityDoesNotExistsException {
         // check if item exists
         Item item = findItemByCode(code);
@@ -328,6 +438,17 @@ public class Manager {
         saveToFile();
     }
 
+    /**
+     * Create a report of all items in 3 categories
+     *  - Separated by locations
+     *  - Separated by categories
+     *  - Sorted by name
+     *
+     * @return  String with the report
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String report(){
         //Sort itens
         Collections.sort(items, new Comparator<Item>() {
@@ -380,6 +501,14 @@ public class Manager {
         return text_loc;
     }
 
+    /**
+     * prints help message
+     *
+     * @return  String with the help message
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String printHelp(){
         return  "HELP:\n" +
                 " - use /register to register a new item, category or location\n" +
@@ -389,11 +518,28 @@ public class Manager {
                 " - use /report to generate a report\n";
     }
 
+    /**
+     * prints welcome message
+     *
+     * @return  String with the welcome message
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String printWelcome(){
         return  "Welcome to GoddardBot, a bot to manage items from your institution.\n" +
                 "Type /help to see more!\n";
     }
 
+    /**
+     * prints the submenu of the bot
+     *
+     * @param   command command of the submenu
+     * @return  String with the submenu
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     public String printSubmenu(String command) {
         String str = new String();
 
@@ -431,6 +577,15 @@ public class Manager {
         return str;
     }
 
+    /**
+     * finds the category object with the same code as the given code
+     *
+     * @param   code code to be searched
+     * @return  Category object with the same code or null if it does not exists
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     private Category findCategoryByCode(String code) {
         for (int index = 0 ; index < categories.size() ; index++) {
             if(categories.get(index).getCode().equals(code)){
@@ -441,6 +596,15 @@ public class Manager {
         return null;
     }
 
+    /**
+     * finds the location object with the same name as the given name
+     *
+     * @param   name name to be searched
+     * @return  Location object with the same name or null if it does not exists
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     private Location findLocationByName(String name) {
         for (int index = 0 ; index < locations.size() ; index++) {
             if(locations.get(index).getName().equals(name)){
@@ -451,6 +615,15 @@ public class Manager {
         return null;
     }
 
+    /**
+     * finds the item object with the same code as the given code
+     *
+     * @param   code code to be searched
+     * @return  Item object with the same code or null if it does not exists
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     private Item findItemByCode(String code) {
         for (int index = 0 ; index < items.size() ; index++) {
             if(items.get(index).getCode().equals(code)) {
@@ -461,6 +634,13 @@ public class Manager {
         return null;
     }
 
+    /**
+     * save all vectors data in files (.txt)
+     *
+     * @author  Matheus de Andrade
+     * @author  Pedro Henrique
+     * @version 1.0
+     */
     private void saveToFile(){
         System.out.println("Saving info in files");
         // Saving locations
@@ -503,5 +683,4 @@ public class Manager {
             e.printStackTrace();
         }
     }
-
 }
