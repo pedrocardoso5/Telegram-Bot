@@ -1,6 +1,8 @@
 import org.apache.commons.io.IOExceptionWithCause;
 
 import java.util.Iterator;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Vector;
 import java.io.File;
 import java.io.FileWriter;
@@ -239,8 +241,15 @@ public class Manager {
 
     public String listItems(){
         String text = "\n";
-        for (int index = 0 ; index < items.size() ; index++){
-            text = text + items.get(index).toString() + "\n";
+        for (int index = 0 ; index < locations.size() ; index++){
+            text = text + locations.get(index).getName() + ":\n";
+            for (int index_ = 0 ; index_ < items.size() ; index_++){
+                if(items.get(index_).getLocation().getName().equals(locations.get(index).getName())) {
+                    text = text + "\t" + items.get(index_).getName() +" " +
+                            items.get(index_).getCode() + ":\n\t\t-Description: " + items.get(index_).getDescription() +
+                            "\n\t\t-Category: "+ items.get(index_).getCategory().getName() + "\n\n";
+                }
+            }
         }
         return text;
     }
@@ -267,6 +276,58 @@ public class Manager {
 
         // saving
         saveToFile();
+    }
+
+    public String report(){
+        //Sort itens
+        Collections.sort(items, new Comparator<Item>() {
+            public int compare(Item first, Item second) {
+                return first.getName().compareTo(second.getName());
+            }
+        });
+        Collections.sort(locations, new Comparator<Location>() {
+            public int compare(Location first, Location second) {
+                return first.getName().compareTo(second.getName());
+            }
+        });
+        Collections.sort(categories, new Comparator<Category>() {
+            public int compare(Category first, Category second) {
+                return first.getName().compareTo(second.getName());
+            }
+        });
+        String text_loc = "ORDERED BY LOCATIONS\n\n";
+        //localização
+        for (int index = 0 ; index < locations.size() ; index++){
+            text_loc = text_loc + locations.get(index).getName() + ":\n";
+            for (int index_ = 0 ; index_ < items.size() ; index_++){
+                if(items.get(index_).getLocation().getName().equals(locations.get(index).getName())) {
+                    text_loc = text_loc + "\t" + items.get(index_).getName() +" " +
+                            items.get(index_).getCode() + ":\n\t\t-Description: " + items.get(index_).getDescription() +
+                            "\n\t\t-Category: "+ items.get(index_).getCategory().getName() + "\n\n";
+                }
+            }
+        }
+        text_loc= text_loc + "\n-----------------------------------\n\n\nORDERED BY CATEGORIES\n\n";
+        //categoria
+        for (int cindex = 0 ; cindex < categories.size() ; cindex++){
+            text_loc = text_loc + categories.get(cindex).getName() + ":\n";
+            for (int index_ = 0 ; index_ < items.size() ; index_++){
+                if(items.get(index_).getCategory().getName().equals(categories.get(cindex).getName())) {
+                    text_loc = text_loc + "\t" + items.get(index_).getName() +" " +
+                            items.get(index_).getCode() + ":\n\t\t--Description: " + items.get(index_).getDescription() +
+                            "\n\t\t-Location: "+ items.get(index_).getLocation().getName() + "\n\n";
+                }
+            }
+        }
+        text_loc= text_loc + "\n-----------------------------------\n\n\nORDERED BY NAMES\n\n";
+        //names
+        for (int index_ = 0 ; index_ < items.size() ; index_++){
+            text_loc = text_loc + items.get(index_).getName() +" " +
+                    items.get(index_).getCode() + ":\n\t\t--Description: " + items.get(index_).getDescription() +
+                    "\n\t\t-Category: "+ items.get(index_).getCategory().getName() +
+                    "\n\t\t-Location: "+ items.get(index_).getLocation().getName() + "\n\n";
+        }
+        return text_loc;
     }
 
     public String printHelp(){

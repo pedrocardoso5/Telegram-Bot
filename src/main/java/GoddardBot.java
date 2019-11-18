@@ -95,7 +95,7 @@ public class GoddardBot extends TelegramLongPollingBot {
             }
         }
         else if (command.equals("/report")) {
-            message.setText("Error: command not available yet");
+            message.setText(manager.report());
         }
         else if (command.equals("/register") || command.equals("/list") ||
                  command.equals("/search") || command.equals("/edit")) {
