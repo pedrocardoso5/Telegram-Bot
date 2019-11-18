@@ -1,3 +1,4 @@
 Setor_3 Setor_de_aulas_de_materias_exatas_e_da_terra
 IMD Instituto_Metropole_Digital
 Predio_do_sigaa Sera_hein?
+Setor_4 Setor_de_exatas_tbm

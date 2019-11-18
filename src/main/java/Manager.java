@@ -145,6 +145,82 @@ public class Manager {
         }
     }
 
+    public void addLocation(String str) throws EntityAlreadyExistsException {
+        // splitting string
+        String arr[] = str.split(" ");
+        if(arr.length != 2){
+            throw new IllegalArgumentException("Wrong arguments");
+        }
+
+        // checking if the location already exists
+        Location location = findLocationByName(arr[0]);
+        if(location != null) {
+            throw new EntityAlreadyExistsException("A location with this name already exists");
+        }
+
+        // adding
+        location = new Location(arr[0], arr[1]);
+        locations.add(location);
+
+        // saving
+        saveToFile();
+    }
+
+    public void addCategory(String str) throws EntityAlreadyExistsException {
+        // splitting string
+        String arr[] = str.split(" ");
+        if(arr.length != 3){
+            throw new IllegalArgumentException("Wrong arguments");
+        }
+
+        // checking if the category already exists
+        Category category = findCategoryByCode(arr[0]);
+        if(category != null) {
+            throw new EntityAlreadyExistsException("A category with this code already exists");
+        }
+
+        // adding
+        category = new Category(arr[0], arr[1], arr[2]);
+        categories.add(category);
+
+        // saving
+        saveToFile();
+    }
+
+    public void addItem(String str) throws EntityAlreadyExistsException, EntityDoesNotExistsException {
+        //splitting string
+        System.out.println(str);
+        String arr[] = str.split(" ");
+        if(arr.length != 5){
+            throw new IllegalArgumentException("Wrong arguments");
+        }
+
+        // checking if the item already exists
+        Item item = findItemByCode(arr[0]);
+        if(item != null) {
+            throw new EntityAlreadyExistsException("An item with this code already exists");
+        }
+
+        // checking if the category exists
+        Category category = findCategoryByCode(arr[3]);
+        if(category == null){
+            throw new EntityDoesNotExistsException("Category does not exist");
+        }
+
+        // checking if the location exists
+        Location location = findLocationByName(arr[4]);
+        if (location == null){
+            throw new EntityDoesNotExistsException("Location does not exist");
+        }
+
+        // adding
+        item = new Item(arr[0], arr[1], arr[2], category, location);
+        items.add(item);
+
+        // saving
+        saveToFile();
+    }
+
     public String listLocations(){
         String text = "\n";
         for (int index = 0 ; index < locations.size() ; index++){
@@ -152,6 +228,7 @@ public class Manager {
         }
         return text;
     }
+
     public String listCategories(){
         String text = "\n";
         for (int index = 0 ; index < categories.size() ; index++){
@@ -159,74 +236,13 @@ public class Manager {
         }
         return text;
     }
+
     public String listItems(){
         String text = "\n";
         for (int index = 0 ; index < items.size() ; index++){
             text = text + items.get(index).toString() + "\n";
         }
         return text;
-    }
-    private Category findCategoryByCode(String code) {
-        for (int index = 0 ; index < categories.size() ; index++) {
-            if(categories.get(index).getCode().equals(code)){
-                return categories.get(index);
-            }
-        }
-
-        return null;
-    }
-
-    private Location findLocationByName(String name) {
-        for (int index = 0 ; index < locations.size() ; index++) {
-            if(locations.get(index).getName().equals(name)){
-                return locations.get(index);
-            }
-        }
-
-        return null;
-    }
-
-    private void saveToFile(){
-        System.out.println("Saving info in files");
-        // Saving locations
-        try {
-
-            // saving locations vector info in a aux file
-            FileWriter fw = new FileWriter("data/aux_file.txt");
-            for (int index = 0 ; index < locations.size() ; index++){
-                fw.write(locations.get(index).toString() + "\n");
-            }
-            fw.close();
-            // deleting locations.txt and changing aux file name to locations.txt
-            File old_file = new File("data/locations.txt");
-            File new_file = new File("data/aux_file.txt");
-            new_file.renameTo(old_file);
-
-            // saving categories vector info in a aux file
-            fw = new FileWriter("data/aux_file.txt");
-            for (int index = 0 ; index < categories.size() ; index++){
-                fw.write(categories.get(index).toString() + "\n");
-            }
-            fw.close();
-            // deleting categories.txt and changing aux file name to categories.txt
-            old_file = new File("data/categories.txt");
-            new_file = new File("data/aux_file.txt");
-            new_file.renameTo(old_file);
-
-            // saving categories vector info in a aux file
-            fw = new FileWriter("data/aux_file.txt");
-            for (int index = 0 ; index < items.size() ; index++){
-                fw.write(items.get(index).toString() + "\n");
-            }
-            fw.close();
-            // deleting items.txt and changing aux file name to items.txt
-            old_file = new File("data/items.txt");
-            new_file = new File("data/aux_file.txt");
-            new_file.renameTo(old_file);
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
     }
 
     public String printHelp(){
@@ -278,6 +294,79 @@ public class Manager {
         }
 
         return str;
+    }
+
+    private Category findCategoryByCode(String code) {
+        for (int index = 0 ; index < categories.size() ; index++) {
+            if(categories.get(index).getCode().equals(code)){
+                return categories.get(index);
+            }
+        }
+
+        return null;
+    }
+
+    private Location findLocationByName(String name) {
+        for (int index = 0 ; index < locations.size() ; index++) {
+            if(locations.get(index).getName().equals(name)){
+                return locations.get(index);
+            }
+        }
+
+        return null;
+    }
+
+    private Item findItemByCode(String code) {
+        for (int index = 0 ; index < items.size() ; index++) {
+            if(items.get(index).getCode().equals(code)) {
+                return items.get(index);
+            }
+        }
+
+        return null;
+    }
+
+    private void saveToFile(){
+        System.out.println("Saving info in files");
+        // Saving locations
+        try {
+
+            // saving locations vector info in a aux file
+            FileWriter fw = new FileWriter("data/aux_file.txt");
+            for (int index = 0 ; index < locations.size() ; index++){
+                fw.write(locations.get(index).toString() + "\n");
+            }
+            fw.close();
+            // deleting locations.txt and changing aux file name to locations.txt
+            File old_file = new File("data/locations.txt");
+            File new_file = new File("data/aux_file.txt");
+            new_file.renameTo(old_file);
+
+            // saving categories vector info in a aux file
+            fw = new FileWriter("data/aux_file.txt");
+            for (int index = 0 ; index < categories.size() ; index++){
+                fw.write(categories.get(index).toString() + "\n");
+            }
+            fw.close();
+            // deleting categories.txt and changing aux file name to categories.txt
+            old_file = new File("data/categories.txt");
+            new_file = new File("data/aux_file.txt");
+            new_file.renameTo(old_file);
+
+            // saving categories vector info in a aux file
+            fw = new FileWriter("data/aux_file.txt");
+            for (int index = 0 ; index < items.size() ; index++){
+                fw.write(items.get(index).toString() + "\n");
+            }
+            fw.close();
+            // deleting items.txt and changing aux file name to items.txt
+            old_file = new File("data/items.txt");
+            new_file = new File("data/aux_file.txt");
+            new_file.renameTo(old_file);
+
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 }

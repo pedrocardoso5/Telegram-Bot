@@ -1,2 +1,3 @@
 CT001 Limpeza Materiais_de_limpeza
 CT002 Computadores Todos_os_computadores_e_monitores
+CT005 fardas fardas_de_funcionários

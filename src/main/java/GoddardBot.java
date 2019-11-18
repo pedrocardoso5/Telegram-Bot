@@ -10,8 +10,14 @@ public class GoddardBot extends TelegramLongPollingBot {
 
     public void onUpdateReceived(Update update) {
         // Receiving commands
-        String command=update.getMessage().getText();
+        String msgReceived = update.getMessage().getText();
         SendMessage message = new SendMessage();
+
+        String arr[] = msgReceived.split(" ", 2);
+        String command = arr[0];
+        String args = "";
+        if (arr.length > 1)
+            args = arr[1];
 
         // commands switcher
         manager = manager.getInstance();
@@ -24,13 +30,36 @@ public class GoddardBot extends TelegramLongPollingBot {
             message.setText(manager.printWelcome());
         }
         else if (command.equals("/registerLocation")) {
-            message.setText("Error: command not available yet");
+            try {
+                manager.addLocation(args);
+                message.setText("Location added!");
+            } catch (EntityAlreadyExistsException e) {
+                message.setText("Already exists a location with this name");
+            } catch (IllegalArgumentException e) {
+                message.setText("Wrong arguments to this command");
+            }
         }
         else if (command.equals("/registerCategory")) {
-            message.setText("Error: command not available yet");
+            try {
+                manager.addCategory(args);
+                message.setText("Category added!");
+            } catch (EntityAlreadyExistsException e) {
+                message.setText("Already exists a category with this code");
+            } catch (IllegalArgumentException e) {
+                message.setText("Wrong arguments to this command");
+            }
         }
         else if (command.equals("/registerItem")) {
-            message.setText("Error: command not available yet");
+            try {
+                manager.addItem(args);
+                message.setText("Item added!");
+            } catch (EntityAlreadyExistsException e) {
+                message.setText("Already exists an item with this code");
+            } catch (EntityDoesNotExistsException e) {
+                message.setText(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                message.setText("Wrong arguments to this command");
+            }
         }
         else if (command.equals("/listLocations")) {
             message.setText(manager.listLocations());
