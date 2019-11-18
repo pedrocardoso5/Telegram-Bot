@@ -265,11 +265,11 @@ public class Manager {
         if (command.equals("/register")){
             str =   "Register:\n" +
                     "- Use /registerLocation to add a new location:\n" +
-                    "    /registerLocation \"name\" \"description\"\n\n" +
+                    "    /registerLocation <name> <description>\n\n" +
                     "- Use /registerCategory to add a new category\n" +
-                    "    /registerCategory \"code\" \"name\" \"description\"\n\n" +
+                    "    /registerCategory <code> <name> <description>\n\n" +
                     "- Use /registerItem to add a new item\n" +
-                    "    /registerItem \"code\" \"name\" \"description\" \"category code\" \"location name\"\n";
+                    "    /registerItem <code> <name> <description> <category_code> <location name>\n";
         }
         if (command.equals("/list")) {
             str =   "List:\n" +
@@ -280,17 +280,17 @@ public class Manager {
         if (command.equals("/search")) {
             str =   "Search:\n" +
                     "- Use /searchByCode to search an item by code:\n" +
-                    "    /searchByCode \"item code\"\n\n" +
+                    "    /searchByCode <item code>\n\n" +
                     "- Use /searchByName to search an item by name:\n" +
-                    "    /searchByName \"item name\"\n\n" +
+                    "    /searchByName <item name>\n\n" +
                     "- Use /searchByDescription to search an item by description:\n" +
-                    "    /searchByDescription \"item description\"\n\n";
+                    "    /searchByDescription <item description>\n\n";
 
         }
         if (command.equals("/edit")) {
             str =   "Edit:\n" +
                     "- Use /editItemLocation to change a item location:\n" +
-                    "    /editItemLocation \"item code\" \"new location name\"\n";
+                    "    /editItemLocation <item code> <new location name>\n";
         }
 
         return str;
