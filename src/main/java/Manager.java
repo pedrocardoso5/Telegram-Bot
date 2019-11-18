@@ -254,9 +254,59 @@ public class Manager {
         return text;
     }
 
+    public String searchItemByCode(String code){
+        String result = new String("RESULT: \n\n");
+
+        //searching
+        for (int index = 0 ; index < items.size() ; index++) {
+            if(items.get(index).getCode().contains(code)){
+                result += items.get(index).toString() + "\n\n";
+            }
+        }
+
+        if(result.equals("RESULT: \n\n")){
+            result = "no results";
+        }
+
+        return result;
+    }
+
+    public String searchItemByName(String name){
+        String result = new String("RESULT: \n\n");
+
+        //searching
+        for (int index = 0 ; index < items.size() ; index++){
+            if(items.get(index).getName().contains(name)){
+                result += items.get(index).toString() + "\n\n";
+            }
+        }
+
+        if(result.equals("RESULT: \n\n")){
+            result = "no results";
+        }
+
+        return result;
+    }
+
+    public String searchItemByDescription(String description) {
+        String result = new String("RESULT: \n\n");
+
+        //searching
+        for (int index = 0 ; index < items.size() ; index++){
+            if(items.get(index).getDescription().contains(description)){
+                result += items.get(index).toString() + "\n\n";
+            }
+        }
+
+        if(result.equals("RESULT: \n\n")){
+            result = "no results";
+        }
+
+        return result;
+    }
+
     public void editItemLocation(String code, String location_name) throws EntityDoesNotExistsException {
         // check if item exists
-        System.out.println(code + " === " + location_name);
         Item item = findItemByCode(code);
         if(item == null) {
             throw new EntityDoesNotExistsException("Item does not exist");

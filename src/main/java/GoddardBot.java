@@ -72,13 +72,28 @@ public class GoddardBot extends TelegramLongPollingBot {
             message.setText(manager.listItems());
         }
         else if (command.equals("/searchByCode")) {
-            message.setText("Error: command not available yet");
+            if(args.split(" ").length != 1 || args.equals("")){
+                message.setText("Wrong arguments to this command");
+            }
+            else {
+                message.setText(manager.searchItemByCode(args));
+            }
         }
         else if (command.equals("/searchByName")) {
-            message.setText("Error: command not available yet");
+            if(args.split(" ").length != 1 || args.equals("")){
+                message.setText("Wrong arguments to this command");
+            }
+            else {
+                message.setText(manager.searchItemByName(args));
+            }
         }
         else if (command.equals("/searchByDescription")) {
-            message.setText("Error: command not available yet");
+            if(args.split(" ").length != 1 || args.equals("")){
+                message.setText("Wrong arguments to this command");
+            }
+            else {
+                message.setText(manager.searchItemByDescription(args));
+            }
         }
         else if (command.equals("/editItemLocation")) {
             String args_arr[] = args.split(" ");
