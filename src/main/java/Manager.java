@@ -145,21 +145,21 @@ public class Manager {
         }
     }
 
-    public String list_Locations(){
+    public String listLocations(){
         String text = "\n";
         for (int index = 0 ; index < locations.size() ; index++){
             text = text + locations.get(index).toString() + "\n";
         }
         return text;
     }
-    public String list_Categories(){
+    public String listCategories(){
         String text = "\n";
         for (int index = 0 ; index < categories.size() ; index++){
             text = text + categories.get(index).toString() + "\n";
         }
         return text;
     }
-    public String list_Items(){
+    public String listItems(){
         String text = "\n";
         for (int index = 0 ; index < items.size() ; index++){
             text = text + items.get(index).toString() + "\n";
@@ -232,7 +232,7 @@ public class Manager {
     public String printHelp(){
         return  "HELP:\n" +
                 " - use /register to register a new item, category or location\n" +
-                " - use /list to list all items, categories or locations\n" +
+                " - Use /list to list all items, categories or locations:\n" +
                 " - use /search to search an item\n" +
                 " - use /edit to change the location of an item\n" +
                 " - use /report to generate a report\n";
@@ -242,4 +242,42 @@ public class Manager {
         return  "Welcome to GoddardBot, a bot to manage items from your institution.\n" +
                 "Type /help to see more!\n";
     }
+
+    public String printSubmenu(String command) {
+        String str = new String();
+
+        if (command.equals("/register")){
+            str =   "Register:\n" +
+                    "- Use /registerLocation to add a new location:\n" +
+                    "    /registerLocation \"name\" \"description\"\n\n" +
+                    "- Use /registerCategory to add a new category\n" +
+                    "    /registerCategory \"code\" \"name\" \"description\"\n\n" +
+                    "- Use /registerItem to add a new item\n" +
+                    "    /registerItem \"code\" \"name\" \"description\" \"category code\" \"location name\"\n";
+        }
+        if (command.equals("/list")) {
+            str =   "List:\n" +
+                    "- Use /listLocations to list all locations\n" +
+                    "- Use /listCategories to list all categories\n" +
+                    "- use /listItems to list all items";
+        }
+        if (command.equals("/search")) {
+            str =   "Search:\n" +
+                    "- Use /searchByCode to search an item by code:\n" +
+                    "    /searchByCode \"item code\"\n\n" +
+                    "- Use /searchByName to search an item by name:\n" +
+                    "    /searchByName \"item name\"\n\n" +
+                    "- Use /searchByDescription to search an item by description:\n" +
+                    "    /searchByDescription \"item description\"\n\n";
+
+        }
+        if (command.equals("/edit")) {
+            str =   "Edit:\n" +
+                    "- Use /editItemLocation to change a item location:\n" +
+                    "    /editItemLocation \"item code\" \"new location name\"\n";
+        }
+
+        return str;
+    }
+
 }
