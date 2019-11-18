@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="268f59d8-7662-4be8-afec-f9c80d28d3f7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/EntityAlreadyExistsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/EntityDoesNotExistsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/categories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/categories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/items.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/items.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/locations.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/locations.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GoddardBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GoddardBot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Manager.java" afterDir="false" />
     </list>
@@ -143,7 +139,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573975292356</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add items, categories and locations methods, /register commands is working">
+      <created>1574051388610</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1574051388610</updated>
+    </task>
+    <task id="LOCAL-00012" summary="help update">
+      <created>1574051589714</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1574051589714</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +180,9 @@
     <MESSAGE value="toString methods (re)update" />
     <MESSAGE value="adding constructor" />
     <MESSAGE value="Loading locations, categories and items info from files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Loading locations, categories and items info from files" />
+    <MESSAGE value="Add items, categories and locations methods, /register commands is working" />
+    <MESSAGE value="help update" />
+    <option name="LAST_COMMIT_MESSAGE" value="help update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

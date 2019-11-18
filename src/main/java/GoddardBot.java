@@ -22,6 +22,7 @@ public class GoddardBot extends TelegramLongPollingBot {
         // commands switcher
         manager = manager.getInstance();
         System.out.println("Command: " + command);
+        System.out.println("Resto: " + args);
 
         if (command.equals("/help")) {
             message.setText(manager.printHelp());
@@ -80,7 +81,18 @@ public class GoddardBot extends TelegramLongPollingBot {
             message.setText("Error: command not available yet");
         }
         else if (command.equals("/editItemLocation")) {
-            message.setText("Error: command not available yet");
+            String args_arr[] = args.split(" ");
+            if(args_arr.length != 2) {
+                message.setText("Wrong arguments to this command");
+            }
+            else {
+                try {
+                    manager.editItemLocation(args_arr[0], args_arr[1]);
+                    message.setText("Location changed!");
+                } catch (EntityDoesNotExistsException e) {
+                    message.setText(e.getMessage());
+                }
+            }
         }
         else if (command.equals("/report")) {
             message.setText("Error: command not available yet");

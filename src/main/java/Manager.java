@@ -245,6 +245,30 @@ public class Manager {
         return text;
     }
 
+    public void editItemLocation(String code, String location_name) throws EntityDoesNotExistsException {
+        // check if item exists
+        System.out.println(code + " === " + location_name);
+        Item item = findItemByCode(code);
+        if(item == null) {
+            throw new EntityDoesNotExistsException("Item does not exist");
+        }
+
+        // check if new location exists
+        Location new_location = findLocationByName(location_name);
+        if(new_location == null) {
+            throw new EntityDoesNotExistsException("Location does not exist");
+        }
+
+        // find index of item in vector
+        int item_index = items.indexOf(item);
+
+        // change location to the new
+        items.get(item_index).setLocation(new_location);
+
+        // saving
+        saveToFile();
+    }
+
     public String printHelp(){
         return  "HELP:\n" +
                 " - use /register to register a new item, category or location\n" +
