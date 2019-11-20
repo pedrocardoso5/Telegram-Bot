@@ -3,9 +3,8 @@
 A Telegram Bot that stores and manipulates property in different ways made in java. The main goal with this project is to exemplify the content learned in the discipline of LP2.
 
 ## How to use:
-Run the Main using the Intellij IDEA
-
-
+Run the Main using the Intellij IDEA.
+Start the the bot use with /start in telgram.
 
 ## Dependencies:
 * `IntelliJ`
